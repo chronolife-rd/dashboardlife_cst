@@ -313,8 +313,8 @@ def menu():
     """ Display vertical menu """
     
     st.sidebar.markdown(html.menu_overview(), unsafe_allow_html=True)
-    st.sidebar.markdown(html.menu_smart_textile_raw_data(), unsafe_allow_html=True)
     st.sidebar.markdown(html.menu_health_indicators(), unsafe_allow_html=True)
+    st.sidebar.markdown(html.menu_smart_textile_raw_data(), unsafe_allow_html=True)
     st.sidebar.markdown(html.menu_data_report(), unsafe_allow_html=True)
     st.sidebar.markdown(html.menu_definitions(), unsafe_allow_html=True)
 

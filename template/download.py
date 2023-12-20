@@ -61,12 +61,6 @@ def health_indicators_to_excel():
     Qt_dict = {}
     Temp_dict = {}
 
-    #Only Garmin data
-    # Stress_dict ={}
-    # Pulseox_dict = {}
-    # Bodybatt_dict = {}
-    # Sleep_dict = {}
-
     HR_value = get_bpm_values()
     HR_dict = {
     'Time': HR_value['times'],

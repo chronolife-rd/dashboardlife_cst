@@ -91,7 +91,7 @@ def heart_bpm():
                 connectgaps=False,
                 mode='lines+markers',
                 line=dict(color=COLORS()['cardio_chart'], width=line_width),
-                name='HR Chronolife',
+                name='HR',
                 showlegend=True), 
             row=1, col=1
         )
@@ -146,7 +146,7 @@ def heart_hrv():
                 x=df['times'],
                 mode='lines+markers', connectgaps=False,
                 line=dict(color=COLORS()["cardio_chart"]),
-                name = 'HRV Chronolife',
+                name = 'HRV',
                 showlegend=True),
             row=1, col=1
         )
@@ -255,7 +255,7 @@ def breath_brpm():
                 mode='lines+markers',
                 connectgaps=False,
                 line=dict(color=COLORS()['breath_chart'], width=line_width),
-                name='BRPM Chronolife',
+                name='BRPM',
                 showlegend=True), 
             row=1, col=1
         )
@@ -310,7 +310,7 @@ def breath_brv():
                 y=df["values"],
                 mode='lines+markers',
                 line=dict(color=COLORS()['breath_chart'], width=line_width),
-                name='BRV Chronolife',
+                name='BRV',
                 showlegend=True), 
             row=1, col=1
         )
@@ -470,17 +470,11 @@ def duration():
     xmax = date + datetime.timedelta(days = 1)
         
     y_chronolife    = np.repeat("Smart Textile", 2)
-    y_empty         = np.repeat("", 2)
-    y_empty2        = np.repeat("", 2)
 
     x_chronolife    = get_duration_chronolife()['intervals']
 
     width = 20
     fig = go.Figure()
-    fig.add_trace(go.Scatter(y=y_empty,
-                              x=[datetime.datetime(date.year, date.month, date.day, 00, 0, 0),
-                                 datetime.datetime(date.year, date.month, date.day, 23, 59, 59)],
-                              mode="lines", line=dict(color="white",width=width)))
     
     # Add Chronolife
     for i in range(len(x_chronolife)):
@@ -491,12 +485,8 @@ def duration():
             fig.add_trace(go.Scatter(y = y_chronolife, x=[interval_start, interval_end],
                         mode="lines", line=dict(color=COLORS()["chronolife"],width=width)))
     
-    fig.add_trace(go.Scatter(y=y_empty2,
-                              x=[datetime.datetime(date.year, date.month, date.day, 00, 0, 0),
-                                 datetime.datetime(date.year, date.month, date.day, 23, 0, 0)],
-                              mode="lines", line=dict(color="white",width=width)))
     
-    fig.update_layout(barmode='stack', height=300, 
+    fig.update_layout(barmode='stack', height=250, 
                       template="plotly_white",
                       paper_bgcolor=BGCOLOR, plot_bgcolor=BGCOLOR,
                       showlegend=False,

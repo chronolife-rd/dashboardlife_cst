@@ -91,14 +91,6 @@ def get_health_indicators():
     else :
         chronolife_indicators_pdf = {}
 
-
-    # if (st.session_state.garmin_data_available == True):
-    #     # Format Garmin's text that will be added to pdf 
-    #     garmin_indicators_pdf = garmin_data_for_pdf(garmin_data)
-    #     st.session_state.garmin_indicators_pdf      = garmin_indicators_pdf
-    # else :
-    #     garmin_indicators_pdf = {}
-
        
 
 def get_offset():
@@ -121,142 +113,6 @@ def get_offset():
     
     return output
 
-# def get_bodybattery():
-#     datas = st.session_state.garmin_indicators
-
-#     output = {}
-#     output["values"] = "0"
-#     output["high"]   = "0"
-#     output["low"]    = "0"
-    
-#     if len(datas) > 0 and isinstance(datas["body_battery"]["highest"], str) == False:
-#         output["values"] = datas["body_battery"]["all_values"]
-#         output["high"]   = datas["body_battery"]["highest"]
-#         output["low"]    = datas["body_battery"]["lowest"]
-    
-#     return output
-
-# def get_calories():
-#     datas = st.session_state.garmin_indicators
-    
-#     output = {}
-#     output["total"]    = "0"
-#     output["rest"]  = "0"
-#     output["active"]   = "0"
-    
-#     if len(datas) > 0 and isinstance(datas["calories"]["total"], str) == False:
-#         output["total"]    = datas["calories"]["total"]
-#         output["rest"]  = datas["calories"]["resting"]
-#         output["active"]   = datas["calories"]["active"]
-
-#     return output
-
-
-# def get_intensity():
-#     datas = st.session_state.garmin_indicators
-    
-#     output = {}
-#     output["total"]     = "00h 00min"
-#     output["moderate"]  = "00h 00min"
-#     output["vigurous"]  = "00h 00min"
-    
-#     if len(datas) > 0 and isinstance(datas["intensity_min"]["total"], str) == False:
-#             output["total"]    = td_to_hhmm_str(datas["intensity_min"]["total"])
-#             output["moderate"] = td_to_hhmm_str(datas["intensity_min"]["moderate"])
-#             output["vigurous"] = td_to_hhmm_str(datas["intensity_min"]["vigurous"])
-    
-#     return output
-
-# def get_sleep():
-#     datas = st.session_state.garmin_indicators
-    
-#     output = {}
-#     no_data_time = "00h 00min"
-#     no_data_ratio = "0"
-#     output["values"]            = no_data_time
-#     output["score"]             = no_data_time
-#     output["quality"]           = no_data_time
-#     output["duration"]          = no_data_time
-#     output["duration_deep"]     = no_data_time
-#     output["duration_light"]    = no_data_time
-#     output["duration_rem"]      = no_data_time
-#     output["duration_awake"]    = no_data_time
-#     output["percentage_deep"]   = no_data_ratio
-#     output["percentage_light"]  = no_data_ratio
-#     output["percentage_rem"]    = no_data_ratio
-#     output["percentage_awake"]  = no_data_ratio
-    
-#     if st.session_state.garmin_data_available == True :
-#         if isinstance(datas["sleep"]["score"], str) == False and datas["sleep"]["recorded_time"]>0:
-#             output["values"]            = datas["sleep"]["sleep_map"]
-#             output["score"]             = datas["sleep"]["score"]
-#             output["quality"]           = datas["sleep"]["quality"]
-#             output["duration"]          = datas["sleep"]["recorded_time"]
-#             output["duration_deep"]     = td_to_hhmm_str(datas["sleep"]["deep"])
-#             output["duration_light"]    = td_to_hhmm_str(datas["sleep"]["light"])
-#             output["duration_rem"]      = td_to_hhmm_str(datas["sleep"]["rem"])
-#             output["duration_awake"]    = td_to_hhmm_str(datas["sleep"]["awake"])
-
-#             output["percentage_deep"]   = datas["sleep"]["percentage_deep"]
-#             output["percentage_light"]  = datas["sleep"]["percentage_light"]
-#             output["percentage_rem"]    = datas["sleep"]["percentage_rem"]
-#             output["percentage_awake"]  = datas["sleep"]["percentage_awake"]
-
-#     return output
-
-# def get_spo2():
-#     datas = st.session_state.garmin_indicators
-    
-#     output = {}
-#     output["mean"]    = ""
-#     output["min"]     = ""
-#     output["values"]  = ""
-#     output["times"]   = ""
-    
-#     if len(datas) > 0 and isinstance(datas["spo2"]["averege"], str) == False:
-#             output["mean"]    = datas["spo2"]["averege"]
-#             output["min"]     = datas["spo2"]["lowest"]
-#             output["values"]  = datas["spo2"]["all_values"]
-            
-#     return output
-
-# def get_stress():
-#     datas = st.session_state.garmin_indicators
-    
-#     output = {}
-#     no_data_time = "00h 00min"
-#     no_data_ratio = "0"
-#     output["values"]            = no_data_time
-#     output["score"]             = no_data_time
-#     output["duration"]          = no_data_time
-#     output["duration_rest"]     = no_data_time
-#     output["duration_low"]      = no_data_time
-#     output["duration_medium"]   = no_data_time
-#     output["duration_high"]     = no_data_time
-#     output["percentage_rest"]   = no_data_ratio
-#     output["percentage_low"]    = no_data_ratio
-#     output["percentage_medium"] = no_data_ratio
-#     output["percentage_high"]   = no_data_ratio
-
-#     if st.session_state.garmin_data_available == True :
-#         if len(datas) > 0 and isinstance(datas["stress"]["recorded_time"], str) == False and datas["stress"]["score"] > 0:
-#             output["values"]            = datas["stress"]["all_values"]
-#             output["score"]             = datas["stress"]["score"]
-#             output["duration"]          = datas["stress"]["recorded_time"]
-            
-#             output["duration_rest"]     = td_to_hhmm_str(datas["stress"]["rest"])
-#             output["duration_low"]      = td_to_hhmm_str(datas["stress"]["low"])
-#             output["duration_medium"]   = td_to_hhmm_str(datas["stress"]["medium"])
-#             output["duration_high"]     = td_to_hhmm_str(datas["stress"]["high"])
-            
-        
-#             output["percentage_rest"]   = int(round(datas["stress"]["rest"]/datas["stress"]["recorded_time"]*100))
-#             output["percentage_low"]    = int(round(datas["stress"]["low"]/datas["stress"]["recorded_time"]*100))
-#             output["percentage_medium"] = int(round(datas["stress"]["medium"]/datas["stress"]["recorded_time"]*100))
-#             output["percentage_high"]   = int(round(datas["stress"]["high"]/datas["stress"]["recorded_time"]*100))
-        
-#     return output
-
 def get_duration_chronolife():
     datas = st.session_state.chronolife_indicators
 
@@ -278,29 +134,7 @@ def get_duration_chronolife():
         output["duration_activity"] = datas["duration"]["active"] 
 
 
-    return output
-
-# def get_duration_garmin():
-#     datas = st.session_state.garmin_indicators
-
-#     output = {}    
-#     no_data = "00h 00min"
-#     output["intervals"]         = no_data
-#     output["duration"]          = no_data
-#     output["duration_day"]      = no_data
-#     output["duration_night"]    = no_data
-#     output["duration_rest"]     = no_data 
-#     output["duration_activity"] = no_data
-    
-#     if len(datas) > 0 :
-#         output["intervals"]         = datas["duration"]["intervals"] 
-#         output["duration"]          = datas["duration"]["collected"] 
-#         output["duration_day"]      = datas["duration"]["day"]
-#         output["duration_night"]    = datas["duration"]["night"] 
-#         output["duration_rest"]     = datas["duration"]["rest"] 
-#         output["duration_activity"] = datas["duration"]["active"] 
-    
-#     return output    
+    return output  
 
 def get_steps():
     datas = st.session_state.common_indicators
@@ -313,9 +147,6 @@ def get_steps():
 
     if len(datas) > 0 and isinstance(datas["activity"]["distance"], str) == False:
         output["number"]    = datas["activity"]["steps"] 
-        # if st.session_state.garmin_data_available == True:
-        #     output["goal"]      = datas["activity"]["goal"]
-        #     output["score"] = int(output["number"]/output["goal"]*100)
   
         output["distance"]  = datas["activity"]["distance"] 
 
